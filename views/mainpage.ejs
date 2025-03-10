@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickbyBrick - Connecting Labor with Businesses</title>
+    <style>
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #E2EEE3;
+    color: #374151; 
+    line-height: 1.6;
+}
+
+
+header {
+    background-color: #1F2937; 
+    color: white;
+    padding: 20px 0;
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+header .logo h1 {
+    font-size: 24px;
+}
+
+header .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+header .nav-links li {
+    margin: 0 20px;
+}
+
+header .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+}
+
+
+main {
+    padding: 40px 20px;
+}
+
+.about {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.about h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+
+.solid-squares {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+}
+
+.solid-square {
+    background-color: #F5F5F5; 
+    width: 250px;
+    height: 300px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+.solid-square:hover {
+    transform: translateY(-5px);
+}
+
+.solid-square img {
+    background-color: #EDEDED; 
+    width: 90%;
+    height: 200px;
+    border-radius: 8px;
+    display: block;
+}
+
+
+.login-link {
+    font-size: 18px;
+    color: #2563EB;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.login-link:hover {
+    text-decoration: underline;
+}
+
+
+.statistics {
+    background-color: #F5F5F5;
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.statistics h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #374151; 
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.stat {
+    background-color: #EDEDED;
+    color: #374151; 
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    width: 200px;
+    text-align: center;
+}
+
+.stat h3 {
+    font-size: 36px;
+    color: #2563EB; 
+}
+
+.stat p {
+    font-size: 18px;
+}
+
+
+footer {
+    background-color: #1F2937;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+    </style>
+</head>
+<body>
+   
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>BrickbyBrick</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#statistics">Statistics</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="about" class="about">
+            <h2>About BrickbyBrick</h2>
+            <p>BrickbyBrick is a platform that connects daily wage workers with businesses in need of labor. Our goal is to make it easier for businesses to find skilled workers for their projects and for workers to find consistent work.</p>
+        </section>
+
+        
+        <section class="solid-squares">
+            <div class="solid-square">
+                <img src="D:\fwd_front end\business_logo.jpg" alt="Worker">
+                <a href="/worker_login" class="login-link">Worker Login</a>
+            </div>
+            <div class="solid-square">
+                <img src="D:\fwd_front end\worker_logo.png" alt="Business">
+                <a href="/supervisor_login" class="login-link">Supervisor Login</a>
+            </div>
+            <div class="solid-square">
+                <img src="D:\fwd_front end\worker_logo.png" alt="Business">
+                <a href="/business_login" class="login-link">Business Login</a>
+            </div>
+        </section>
+
+        
+        <section id="statistics" class="statistics">
+            <h2>Our Previous Projects & Achievements</h2>
+            <div class="stats-container">
+                <div class="stat">
+                    <h3>500+</h3>
+                    <p>Projects Completed</p>
+                </div>
+                <div class="stat">
+                    <h3>200+</h3>
+                    <p>Businesses Served</p>
+                </div>
+                <div class="stat">
+                    <h3>1000+</h3>
+                    <p>Workers Placed</p>
+                </div>
+                <div class="stat">
+                    <h3>50+</h3>
+                    <p>Supervisors Active</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+ 
+    <footer>
+        <p>&copy; 2024 BrickbyBrick. All rights reserved.</p>
+    </footer>
+</body>
+</html>

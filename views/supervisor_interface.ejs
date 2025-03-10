@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervisor Dashboard - BrickbyBrick</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa; 
+            color: #333; 
+            line-height: 1.6;
+        }
+
+       
+        header {
+            background-color: #1F2937; 
+            color: white;
+            padding: 20px 0;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header .logo h1 {
+            font-size: 24px;
+        }
+
+        header .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        header .nav-links li {
+            margin: 0 20px;
+        }
+
+        header .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        
+        .main-section {
+            padding: 40px 20px;
+        }
+
+        
+        .current-projects {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6a8c68; 
+            color: white;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        .worker-list {
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #eef6fa;
+            border-radius: 8px;
+            width: 90%;
+        }
+
+        .worker-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+
+        .worker-item span {
+            font-size: 16px;
+        }
+
+        .worker-item input {
+            margin-right: 10px;
+        }
+
+        .acknowledge-btn {
+            padding: 8px 16px;
+            background-color: #00796b; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .acknowledge-btn:hover {
+            background-color: #004d40;
+        }
+
+        .acknowledged {
+            background-color: #4caf50;
+        }
+
+        .attendance-date {
+            margin: 10px 0;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #006b8f;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #004d62;
+        }
+
+        
+        .complaints-inquiries {
+            margin-top: 40px;
+            padding: 30px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .email {
+            background-color: #f1f1f1; 
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .email .subject {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .email .message {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .email .contact {
+            font-size: 14px;
+            color: #888;
+        }
+
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>BrickbyBrick</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#current-projects">Current Projects</a></li>
+                <li><a href="#complaints">Complaints & Inquiries</a></li>
+                <li><a href="/supervisor_logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+   
+    <section class="main-section">
+
+        
+        <section id="current-projects" class="current-projects">
+            <h2>Current Projects</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No</th>
+                        <th>Project Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Pay per Day</th>
+                        <th>Location</th>
+                        <th>Supervisor</th>
+                        <th>Number of Workers</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let serialNo = 1; %> <!-- Initialize serial number -->
+                    <% projects.forEach((project) => { %>
+                        <tr>
+                            <td><%= serialNo++ %></td> <!-- Increment serial number -->
+                            <td><%= project.projectName %></td>
+                            <td><%= new Date(project.startdate).toLocaleDateString() %></td> <!-- Start Date -->
+                            <td><%= new Date(project.enddate).toLocaleDateString() %></td> <!-- End Date -->
+                            <td>&#8377;<%= project.payperday %></td> 
+                            <td><%= project.location %></td> <!-- Location -->
+                            <td><%= project.supervisor %></td> <!-- Supervisor -->
+                            <td><%= project.numberofworkers %></td> <!-- Number of Workers -->
+                            <td>
+                                <%= project.status %>
+                                
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+</section>
+            
+
+            
+            <!-- <div class="worker-list">
+                <h3>Workers in Project A</h3>
+                <div class="attendance-date">
+                    <label for="dateA">Date: </label>
+                    <input type="date" id="dateA">
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 946187 - Ekansh Bhattacharya</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 444921 - Rivan Kapoor</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 136156 - Ashwin Rao</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+<div class="worker-item">
+                    <span>Worker ID 365865 - Rohan Patel Sharma</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 738143 - Varun Chandra</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 303886 - Ronak Deshmukh</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+<div class="worker-item">
+                    <span>Worker ID 847435 - Aaryan Dutt</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 580191 - Kavita Datta</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 216942 - Kirti Prasad</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+<div class="worker-item">
+                    <span>Worker ID 721794 - Charu Mathur</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+
+
+
+                <button class="submit-btn">Submit Attendance</button>
+            </div>
+
+            <div class="worker-list">
+                <h3>Workers in Project C</h3>
+                <div class="attendance-date">
+                    <label for="dateC">Date: </label>
+                    <input type="date" id="dateC">
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 883897 - Charlie Brown</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 444921 - Daisy Williams</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 533968 - Emily Clark</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+<div class="worker-item">
+                    <span>Worker ID 115122 - Jai Kumar</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 838977 - Priya Suryadevara</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 317670 - Rinaesh Varma</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+<div class="worker-item">
+                    <span>Worker ID 746356 - Manish Iyer</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+                <div class="worker-item">
+                    <span>Worker ID 480952 - Manoj Deshmukh</span>
+                    <label><input type="checkbox"> Present</label>
+                </div>
+
+
+                <button class="submit-btn">Submit Attendance</button>
+            </div>
+        </section> -->
+
+        
+        <section id="complaints" class="complaints-inquiries">
+            <h2>Complaints & Inquiries</h2>
+
+            <div class="email">
+                <p class="subject">Complaint: Unsafe Worksite</p>
+                <p class="message">The site is unsafe, and no protective gear was provided. This is a safety hazard for the workers.</p>
+                <p class="contact">Worker ID: 101 | worker101@email.com</p>
+                <button class="acknowledge-btn">Acknowledge</button>
+            </div>
+
+           
+            <div class="email">
+                <p class="subject">Inquiry: Expected Delay</p>
+                <p class="message">Will the delivery of materials be delayed further?</p>
+                <p class="contact">Worker ID: 202 | worker202@email.com</p>
+                <button class="acknowledge-btn">Acknowledge</button>
+            </div>
+        </section>
+    </section>
+
+    <script>
+        
+        document.querySelectorAll(".acknowledge-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                button.classList.toggle("acknowledged");
+                button.innerText = button.classList.contains("acknowledged")
+                    ? "Acknowledged"
+                    : "Acknowledge";
+            });
+        });
+    </script>
+</body>
+</html>

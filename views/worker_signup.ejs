@@ -1,0 +1,204 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickbyBrick - Worker Sign Up</title>
+    <style>
+   
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E2EEE3; 
+            color: #374151; 
+            line-height: 1.6;
+        }
+
+        
+        header {
+            background-color: #1F2937; 
+            color: white;
+            padding: 20px 0;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header .logo h1 {
+            font-size: 24px;
+        }
+
+        header .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        header .nav-links li {
+            margin: 0 20px;
+        }
+
+        header .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        
+        .signup-section {
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 500px;
+            background-color: #F5F5F5;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .signup-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #1F2937;
+        }
+
+        .signup-section form label {
+            display: block;
+            font-size: 16px;
+            margin: 10px 0 5px;
+        }
+
+        .signup-section form input,
+        .signup-section form select,
+        .signup-section form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #EDEDED;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .signup-section form textarea {
+            resize: none;
+        }
+
+        .signup-section form .btn {
+            width: 100%;
+            padding: 10px 20px;
+            background-color: #6a8c68; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .signup-section form .btn:hover {
+            background-color: #8b9b7a; 
+        }
+
+        .signup-section .back-to-login {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .signup-section .back-to-login a {
+            color: #6a8c68;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .signup-section .back-to-login a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>BrickbyBrick</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Search</a></li>
+                <li><a href="/">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <section class="signup-section">
+        <h2>Worker Sign Up</h2>
+        <form method="post" action="/worker_signup" id="signupForm">
+            <label for="username">Name</label>
+            <input type="text" id="username" name="username" placeholder="Enter your name" required>
+
+
+            <label for="aadhar">Aadhar Number</label>
+            <input type="text" id="aadhar" name="aadhar" placeholder="Enter your Aadhar number" maxlength="12" required>
+
+            <!-- <label for="uploadPicture">Upload Picture</label>
+            <input type="file" id="uploadPicture" accept="image/*" required> -->
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" pattern="[0-9]{10}" required>
+
+            <label for="gender">Gender</label>
+            <select name="gender" id="gender" required>
+                <option value="">Select your gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" placeholder="Enter your email address" required>
+
+            <label for="address">Address</label>
+            <textarea id="address" name="address" id="address" placeholder="Enter your address (Street name, locality, city, state, pin code)" rows="3" required></textarea>
+
+            <label for="dob">Date of Birth</label>
+            <input type="date" name="dob" id="dob" required>
+            
+            <label for="password">password</label>
+            <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+            <button type="submit" class="btn" >Sign Up</button>
+        </form>
+
+        <div class="back-to-login">
+            <p>Already have an account? <a href="/worker_login">Back to Login</a></p>
+        </div>
+    </section>
+
+    <!-- <script>
+        function validateForm() {
+            const dob = new Date(document.getElementById("dob").value);
+            const today = new Date();
+            const age = today.getFullYear() - dob.getFullYear();
+            const monthDiff = today.getMonth() - dob.getMonth();
+
+            
+            if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < dob.getDate())) {
+                age--;
+            }
+
+            if (age < 18) {
+                alert("You must be at least 18 years old to sign up.");
+                return false;
+            }
+
+            alert("Sign-Up Successful!");
+        }
+    </script> -->
+</body>

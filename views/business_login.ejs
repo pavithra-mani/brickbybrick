@@ -1,0 +1,175 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickbyBrick - Worker Login</title>
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E2EEE3; 
+            color: #374151; 
+            line-height: 1.6;
+        }
+
+       
+        header {
+            background-color: #1F2937; 
+            color: white;
+            padding: 20px 0;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header .logo h1 {
+            font-size: 24px;
+        }
+
+        header .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        header .nav-links li {
+            margin: 0 20px;
+        }
+
+        header .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        
+        .login-section {
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 400px;
+            background-color: #F5F5F5;
+            border-radius: 8px;
+            box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1F2937;
+        }
+
+        .login-section label {
+            display: block;
+            font-size: 16px;
+            margin: 10px 0 5px;
+            text-align: left;
+        }
+
+        .login-section input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #EDEDED;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-section .captcha {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .login-section .captcha img {
+            height: 50px;
+            border: 1px solid #EDEDED;
+            border-radius: 8px;
+        }
+
+        .login-section .submit-btn {
+            padding: 10px 20px;
+            background-color: #6a8c68; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .login-section .submit-btn:hover {
+            background-color: #8b9b7a; 
+        }
+
+        .login-section .sign-up {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .login-section .sign-up a {
+            color: #6a8c68;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .login-section .sign-up a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>BrickbyBrick</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/">Search</a></li>
+                <li><a href="/">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <section class="login-section">
+        <h2>Business Login</h2>
+        <form id="loginForm" method="post" action="/business_login">
+            <label for="username">Business Name</label>
+            <input type="text" id="username" name="username" placeholder="Enter your Business Name" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+
+            <!-- <div class="captcha">
+                <label for="captchaInput">Captcha</label>
+                <img src="captcha_placeholder.png" alt="Captcha Image">
+            </div>
+            <input type="text" id="captchaInput" placeholder="Enter Captcha" required> -->
+
+            <button type="submit" class="submit-btn">Login</button>
+
+            <p class="sign-up">
+                Don't have an account? <a href="/business_signup">Sign Up</a>
+            </p>
+        </form>
+    </section>
+
+    <!-- <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Login successful!');
+        });
+    </script> -->
+</body>

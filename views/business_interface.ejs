@@ -1,0 +1,369 @@
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickbyBrick - Current Projects</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E2EEE3;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+       
+        header {
+            background-color: #1F2937;
+            color: white;
+            padding: 20px 0;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header .logo h1 {
+            font-size: 24px;
+        }
+
+        header .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        header .nav-links li {
+            margin: 0 20px;
+        }
+
+        header .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        
+        .main-section {
+            padding: 40px 20px;
+        }
+
+        .current-projects {
+            margin-top: 40px;
+            padding: 40px 20px;
+            background-color: #F5F5F5;
+            text-align: center;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6a8c68; 
+            color: white;
+        }
+
+       
+        .query-section {
+            margin-top: 40px;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #F5F5F5;
+        }
+
+        .query-section input, .query-section textarea {
+            width: 80%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #EDEDED;
+            font-size: 16px;
+            margin-bottom: 20px;
+            background-color: #FFFFFF;
+        }
+
+        .query-section .post-btn {
+            padding: 10px 20px;
+            background-color: #6a8c68; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .query-section .post-btn:hover {
+            background-color: #8b9b7a;
+        }
+
+        
+        .new-site-section {
+            margin-top: 40px;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #F5F5F5;
+        }
+
+        .new-site-section input, .new-site-section select {
+            width: 80%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #EDEDED;
+            font-size: 16px;
+            margin-bottom: 20px;
+            background-color: #FFFFFF;
+        }
+        .new-site-section label {
+    display: block; /* Ensures labels take up the full width and are on their own line */
+    text-align: left; /* Align labels to the left for better readability */
+    margin-bottom: 5px; /* Adds spacing between the label and input */
+    font-weight: bold; /* Makes labels stand out */
+    color: #333; /* Slightly darker color for better contrast */
+}
+
+.new-site-section input, .new-site-section select {
+    width: 100%; /* Full width for better alignment */
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #EDEDED;
+    font-size: 16px;
+    margin-bottom: 20px;
+    background-color: #FFFFFF;
+    box-sizing: border-box; /* Ensures padding doesn't break layout */
+}
+
+        .new-site-section .post-btn {
+            padding: 10px 20px;
+            background-color: #6a8c68; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .new-site-section .post-btn:hover {
+            background-color: #8b9b7a;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>BrickbyBrick</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#current-projects">Current Projects</a></li>
+                <li><a href="#new-site">New Site</a></li>
+                <li><a href="/business_logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <section class="main-section">
+
+       
+        <section id="current-projects" class="current-projects">
+            <h2>Current Projects</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No</th>
+                        <th>Project Name</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Location</th>
+                        <th>Supervisor</th>
+                        <th>Number of Workers</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let serialNo = 1; %> <!-- Initialize serial number -->
+                    <% projects.forEach((project) => { %>
+                        <tr>
+                            <td><%= serialNo++ %></td> <!-- Increment serial number -->
+                            <td><%= project.projectName %></td>
+                            <td><%= new Date(project.startdate).toLocaleDateString() %></td> <!-- Start Date -->
+                            <td><%= new Date(project.enddate).toLocaleDateString() %></td> <!-- End Date -->
+                            <td><%= project.location %></td> <!-- Location -->
+                            <td><%= project.supervisor %></td> <!-- Supervisor -->
+                            <td><%= project.numberofworkers %></td> <!-- Number of Workers -->
+                            <td>
+                                <%= project.status %>
+                                
+                            </td>
+                            <td>
+                                <% if (project.status === "In Progress") { %>
+                                    <button class="complete-btn" onclick="markAsComplete('<%= project._id %>')">Complete</button>
+                                <% } else { %>
+                                    <form method="POST" action="/business_home/<%= project._id %>?_method=DELETE">
+                                        <button type="submit" class="delete_btn">Delete</button>
+                                    </form>
+                                <% } %>
+                            </td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </section>
+        
+
+        
+        <section id="new-site" class="new-site-section">
+            <h2>Post a New Site</h2>
+            <form id="projectForm" method="post" action='/business__home'>
+                <!-- Project Name -->
+                <label for="projectName">Project Name</label>
+                <input type="text" id="projectName" name="projectName"  placeholder="Enter project name">
+            
+                <!-- Start Date -->
+                <label for="startdate">Start Date</label>
+                <input type="date" id="startdate" name="startdate" required>
+            
+                <!-- End Date -->
+                <label for="enddate">End Date</label>
+                <input type="date" id="enddate" name="enddate" required>
+            
+                <!-- Location -->
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" required placeholder="Enter location">
+            
+                <!-- Supervisor -->
+                <label for="supervisor">Supervisor Name</label>
+                <input type="text" id="supervisor" name="supervisor" required placeholder="Enter supervisor name">
+            
+                <!-- Number of Workers -->
+                <label for="numberofworkers">Number of Workers</label>
+                <input type="number" id="numberofworkers" name="numberofworkers" required min="1" placeholder="Enter number of workers">
+                
+                <label for="peyperday">Pay per day</label>
+                <input type="number" id="payperday" name="payperday" required min="100" placeholder="Enter pay per day">
+                <!-- Submit Button -->
+                <button type="submit" class="post-btn">Submit</button>
+            </form>
+
+        </section>
+
+        
+        <section id="post-query" class="query-section">
+            <h2>Post Your Query</h2>
+            <input type="text" id="supervisorId" placeholder="Enter Supervisor ID" />
+            <textarea id="queryText" placeholder="Enter your query here..."></textarea>
+            <br>
+            <button class="post-btn" onclick="postQuery()">Post Query</button>
+        </section>
+        
+        <section id="query-list" class="query-section">
+            <h2>All Queries</h2>
+            <div id="queries"></div>
+        </section>
+    </section>
+
+    <script>
+        // Sample array of queries
+        const queries = [
+            { supervisorId: "S101", queryText: "When is the next project meeting?" },
+            { supervisorId: "S102", queryText: "Can we extend the project deadline?" },
+            { supervisorId: "S103", queryText: "What is the budget for this task?" }
+        ];
+    
+        // Function to render queries
+        function renderQueries() {
+            const queryList = document.getElementById('queries');
+            queryList.innerHTML = ''; // Clear existing content
+    
+            queries.forEach((query, index) => {
+                const queryDiv = document.createElement('div');
+                queryDiv.className = 'query-item';
+                queryDiv.innerHTML = `
+                    <p><strong>Query ${index + 1}:</strong></p>
+                    <p><strong>Supervisor ID:</strong> ${query.supervisorId}</p>
+                    <p><strong>Query:</strong> ${query.queryText}</p>
+                    <hr>
+                `;
+                queryList.appendChild(queryDiv);
+            });
+        }
+    
+        // Call the function to render queries on page load
+        renderQueries();
+    
+        // Function to post a new query
+        function postQuery() {
+            const supervisorId = document.getElementById('supervisorId').value;
+            const queryText = document.getElementById('queryText').value;
+    
+            if (supervisorId && queryText) {
+                // Add the new query to the array
+                queries.push({ supervisorId, queryText });
+    
+                // Clear the input fields
+                document.getElementById('supervisorId').value = '';
+                document.getElementById('queryText').value = '';
+    
+                // Re-render the query list
+                renderQueries();
+            } else {
+                alert('Please fill out both fields!');
+            }
+        }
+
+        
+
+        function markAsComplete(projectId) {
+        fetch(`/update-status/${projectId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ status: 'Completed' }),
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    return response.text().then((text) => {
+                        throw new Error(`Server error: ${text}`);
+                    });
+                }
+                return response.json(); // Parse JSON response
+            })
+            .then((data) => {
+                if (data.success) {
+                    window.location.reload(); // Reload the page
+                } else {
+                    alert('Failed to update status: ' + data.message);
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('An error occurred: ' + error.message);
+            });
+    }
+    </script>
+
+</body>

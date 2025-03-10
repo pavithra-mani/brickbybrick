@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BrickbyBrick - Search and Query</title>
+    <style>
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E2EEE3;
+            color: #374151; 
+            line-height: 1.6;
+        }
+
+        
+        header {
+            background-color: #1F2937; 
+            color: white;
+            padding: 20px 0;
+        }
+
+        header nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        header .logo h1 {
+            font-size: 24px;
+        }
+
+        header .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        header .nav-links li {
+            margin: 0 20px;
+        }
+
+        header .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+        }
+
+        
+        .search-section {
+            background-color: #F5F5F5;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .search-section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            margin: 20px 0;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #FFFFFF;
+            border: 1px solid #EDEDED;
+            width: 300px;
+            font-size: 16px;
+        }
+
+        .filter-select {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #FFFFFF;
+            border: 1px solid #EDEDED;
+            font-size: 16px;
+        }
+
+        .submit-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6a8c68; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #8b9b7a;
+        }
+
+        
+        .results-section {
+            margin-top: 40px;
+            padding: 40px 20px;
+            background-color: #F5F5F5;
+            text-align: center;
+        }
+
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6a8c68; 
+            color: white;
+        }
+
+        
+        .query-section {
+            margin-top: 40px;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #F5F5F5;
+        }
+
+        .query-section textarea {
+            width: 90%;
+            height: 150px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #EDEDED;
+            font-size: 16px;
+            resize: none;
+            background-color: #FFFFFF;
+        }
+
+        .query-section .post-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #6a8c68;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .query-section .post-btn:hover {
+            background-color: #8b9b7a;
+        }
+
+        
+        .register-btn {
+            padding: 5px 10px;
+            background-color: #6a8c68; 
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background-color: #8b9b7a;
+        }
+        .apply-btn {
+        padding: 10px 20px;
+        background-color: #007BFF; /* Blue color */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .apply-btn:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+    </style>
+</head>
+<body>
+
+   
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>BrickbyBrick</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#search">Search</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/worker_logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <section id="search" class="search-section">
+        <h2>Search for Workers/Businesses</h2>
+       
+        <input type="text" id="locationInput" class="search-bar" placeholder="Enter location...">
+
+        <select class="filter-select" id="durationSelect">
+            <option value="useMyLocation">Use My Location</option>
+            <option value="locationOnly">Type Location</option>
+        </select>
+
+        <select class="filter-select" id="durationFilter">
+            <option value="short">Short Duration</option>
+            <option value="long">Long Duration</option>
+        </select>
+
+        <button class="submit-btn" onclick="searchResults()">Search</button>
+    </section>
+
+    
+    <section id="results" class="results-section">
+        <h2>Search Results</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Serial No</th>
+                    <th>Project Name</th>
+                    <th>Location</th>
+                    <th>Pay per Day</th>
+                    <th>Duration</th>
+                    <th>Supervisor</th>
+                    <th>Register for Project</th>
+                </tr>
+            </thead>
+            <tbody id="resultsTableBody">
+
+                <% let serialNo = 1; %> <!-- Initialize serial number -->
+                <% projects.forEach((project) => { 
+                    if (project.status === 'In Progress') { %> <!-- Show only projects with status 'In Progress' -->
+                    <tr>
+                    <td><%= serialNo++ %></td> 
+                    <td><%= project.projectName %></td>
+                    <td><%= project.location %></td> 
+                    <td>&#8377;<%= project.payperday %></td> 
+                <td>
+                    <%= Math.ceil((new Date(project.enddate) - new Date(project.startdate)) / (1000 * 60 * 60 * 24)) %> days
+                </td>
+                <td><%= project.supervisor %></td> 
+                <td>
+                    <button class="apply-btn" onclick="applyForProject('<%= project.projectName %>')">Apply</button>
+                </td> 
+            </tr>
+            <%  } 
+            }); %>
+                
+            </tbody>
+        </table>
+    </section>
+
+    
+    <section class="query-section">
+        <h2>Post Your Query</h2>
+        <textarea placeholder="Enter your query here..."></textarea>
+        <br>
+        <button class="post-btn" onclick="alert('Query posted!')">Post Query</button>
+    </section>
+
+    <script>
+        function searchResults() {
+            
+            const locationInput = document.getElementById('locationInput').value;
+            const locationOption = document.getElementById('durationSelect').value;
+            const durationFilter = document.getElementById('durationFilter').value;
+           
+            
+            const results = [
+                { serialNo: 1, name: "Tech Solutions", location: "Mumbai", pay: "₹600", duration: "Short", supervisor: "Ravi Kumar", phone: "+91 98765 43210" },
+                { serialNo: 2, name: "BuildMasters", location: "Delhi", pay: "₹650", duration: "Long", supervisor: "Anita Sharma", phone: "+91 98765 12345" },
+                { serialNo: 3, name: "Green Builders", location: "Bangalore", pay: "₹700", duration: "Short", supervisor: "Vikram Soni", phone: "+91 98765 67890" },
+                { serialNo: 4, name: "City Labor", location: "Kolkata", pay: "₹550", duration: "Long", supervisor: "Pooja Das", phone: "+91 98765 54321" },
+                { serialNo: 5, name: "Quick Build Co.", location: "Chennai", pay: "₹600", duration: "Short", supervisor: "Suresh Reddy", phone: "+91 98765 23456" },
+                { serialNo: 6, name: "Skyline Constructors", location: "Hyderabad", pay: "₹750", duration: "Long", supervisor: "Priya Nair", phone: "+91 98765 34567" },
+                { serialNo: 7, name: "ProBuild Group", location: "Ahmedabad", pay: "₹700", duration: "Short", supervisor: "Karan Patel", phone: "+91 98765 45678" },
+                { serialNo: 8, name: "NextGen Builders", location: "Pune", pay: "₹800", duration: "Long", supervisor: "Madhuri Gupta", phone: "+91 98765 56789" },
+                { serialNo: 9, name: "Future Workforce", location: "Surat", pay: "₹650", duration: "Short", supervisor: "Rajesh Yadav", phone: "+91 98765 67890" },
+                { serialNo: 10, name: "City Laborers", location: "Jaipur", pay: "₹550", duration: "Long", supervisor: "Neha Mehra", phone: "+91 98765 78901" },
+            ];
+
+            
+            const filteredResults = results.filter(result => {
+                if (locationOption === 'useMyLocation' || result.location.toLowerCase().includes(locationInput.toLowerCase())) {
+                    if (durationFilter === 'short' && result.duration.toLowerCase() === 'short') {
+                        return true;
+                    } else if (durationFilter === 'long' && result.duration.toLowerCase() === 'long') {
+                        return true;
+                    } else if (durationFilter === 'all') {
+                        return true;
+                    }
+                }
+                return false;
+            });
+
+            
+            const resultsTableBody = document.getElementById('resultsTableBody');
+            resultsTableBody.innerHTML = ''; 
+            filteredResults.forEach(result => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${result.serialNo}</td>
+                    <td>${result.name}</td>
+                    <td>${result.location}</td>
+                    <td>${result.pay}</td>
+                    <td>${result.duration}</td>
+                    <td>${result.supervisor} - ${result.phone}</td>
+                    <td><button class="register-btn" onclick="registerForProject()">Register</button></td>
+                `;
+                resultsTableBody.appendChild(row);
+            });
+        }
+
+        function registerForProject() {
+            alert("Registered!");
+        }
+        function applyForProject(projectName) {
+        alert(`You have applied for the project: ${projectName}`);
+        // Additional logic for applying to a project can be added here.
+    }
+    </script>
+</body>
+</html>
